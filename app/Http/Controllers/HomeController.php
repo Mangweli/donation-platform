@@ -23,13 +23,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $from       = Carbon::now()->startOfDay();
         $to         = Carbon::now()->endOfDay();
-        $donations  = DB::Table('Donations')->orderBy('created_at', 'desc')->paginate(10);
-        $total      = DB::Table('Donations')->sum('Amount');
-        $todayTotal = DB::Table('Donations')->whereBetween('created_at', [$from, $to])->sum('Amount');
+        $total      = DB::Table('donations')->sum('Amount');
+        $todayTotal = DB::Table('donations')->whereBetween('created_at', [$from, $to])->sum('Amount');
+
+        if($request->has('name')) {
+            $donations  = DB::Table('donations')
+                            ->where("full_name","like","%".trim($request->get('name'))."%")
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(10);
+        }else{
+            $donations  = DB::Table('donations')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+        }
 
         return view('home', compact('donations', 'total', 'todayTotal'));
     }

@@ -53,18 +53,25 @@ class DonationsController extends Controller
 
         $invoiceDate = Carbon::now()->toDateTimeString();
 
-        $id = DB::Table("Donations")->insertGetId([
-                        'full_name'    => trim($request->input('name')),
-                        'email'        => trim($request->input('email')),
-                        'phone'        => trim($request->input('phone')),
-                        'amount'       => trim($request->input('amount')),
-                        'donation_for' => trim($request->input('donationfor')),
-                        'address'      => trim($request->input('address')),
-                        'created_at'   => $invoiceDate
-                ]);
+        $data = [
+            'full_name'    => trim($request->input('name')),
+            'email'        => trim($request->input('email')),
+            'phone'        => trim($request->input('phone')),
+            'amount'       => trim($request->input('amount')),
+            'donation_for' => trim($request->input('donationfor')),
+            'address'      => trim($request->input('address')),
+            'created_at'   => $invoiceDate
+        ];
 
-        $data = $request->all();
+        $id = DB::Table("donations")->insertGetId($data);
 
+        return view('invoices.invoice', compact('data', 'invoiceDate', 'id'));
+    }
+
+    public function getDonationPrints($id) {
+        $data = (array)DB::Table("donations")->where('id', $id)->first();
+        //dd($data);
+        $invoiceDate = $data['created_at'];
         return view('invoices.invoice', compact('data', 'invoiceDate', 'id'));
     }
 

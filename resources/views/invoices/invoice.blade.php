@@ -49,7 +49,7 @@
                         <div class="invoice-to mt25">
                             <ul class="list-unstyled">
                                 <li><strong>Invoiced To</strong></li>
-                                <li>{{ $data['name'] }}</li>
+                                <li>{{ $data['full_name'] }}</li>
                                 <li>{{ $data['address'] }}</li>
                             </ul>
                         </div>
@@ -64,7 +64,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ $data['donationfor'] }}</td>
+                                            <td>{{ $data['donation_for'] }}</td>
 
                                             <td class="text-center">$ {{ number_format($data['amount'], 2) }} USD</td>
                                         </tr>

@@ -22,3 +22,4 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/donations', [DonationsController::class, 'store']);
+Route::get('/donations/{id}', [DonationsController::class, 'getDonationPrints']);
