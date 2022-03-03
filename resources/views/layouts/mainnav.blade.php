@@ -25,7 +25,7 @@
                    <span class="d-sm-inline d-none">{{ __('Sign Out') }}</span>
                </a>
 
-               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+               <form id="logout-form" action="/logout" method="POST" class="d-none">
                    @csrf
                </form>
                   {{-- <span class="d-sm-inline d-none">Sign Out</span> --}}
