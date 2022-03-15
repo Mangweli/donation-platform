@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\programs;
+use App\Models\Programs;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use DB;
 
 class ProgramsController extends Controller
 {
@@ -12,9 +14,18 @@ class ProgramsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->page = 'Programs';
+    }
+
     public function index()
     {
-        //
+        $title    = $this->page;
+        $programs = programs::paginate();
+
+        return view('programs.index', compact('programs', 'title'));
     }
 
     /**
@@ -35,7 +46,24 @@ class ProgramsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'        => 'required',
+            'description' => 'required',
+            'amount'      => 'required'
+        ]);
+
+        $invoiceDate = Carbon::now()->toDateTimeString();
+
+        $data = [
+            'name'        => trim($request->input('name')),
+            'description' => trim($request->input('description')),
+            'amount'      => trim($request->input('amount')),
+            'created_at'  => $invoiceDate
+        ];
+
+        DB::Table("programs")->insert($data);
+
+        return redirect('/programs')->with('success', 'Program Added!');
     }
 
     /**
