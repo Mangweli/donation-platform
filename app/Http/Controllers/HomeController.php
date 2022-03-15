@@ -8,6 +8,7 @@ use DB;
 
 class HomeController extends Controller
 {
+    private $page;
     /**
      * Create a new controller instance.
      *
@@ -16,6 +17,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->page = 'Dashboard';
+
     }
 
     /**
@@ -25,6 +28,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $title      = $this->page;
         $from       = Carbon::now()->startOfDay();
         $to         = Carbon::now()->endOfDay();
         $total      = DB::Table('donations')->sum('Amount');
@@ -41,7 +45,7 @@ class HomeController extends Controller
             ->paginate(10);
         }
 
-        return view('home', compact('donations', 'total', 'todayTotal'));
+        return view('home', compact('donations', 'total', 'todayTotal','title'));
     }
 
     public function getDonations() {
