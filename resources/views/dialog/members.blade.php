@@ -5,8 +5,8 @@
             <form method="POST" action="/members">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">New Donar</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h4 class="modal-title">New Donor</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <!-- Modal body -->

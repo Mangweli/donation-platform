@@ -15,18 +15,26 @@
                         <div class="card-body">
 
                                 @csrf
-                                <label>{{ __('Name') }}</label>
+                                <label>{{ __('Donor') }}</label>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Full Name" aria-label="Email" aria-describedby="name-addon" @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <select class="form-control" placeholder="Select Donor aria-label="donor" aria-describedby="donor-addon" @error('donor') is-invalid @enderror" name="donor" value="{{ old('donor') }}" required autocomplete="donor" autofocus>
+                                        @foreach($donors as $donor)
+                                            <option value="{{ $donor->id }}">{{ $donor->first_name }} {{ $donor->last_name }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <label>{{ __('Email Address') }}</label>
+                                <label>{{ __('Programs') }}</label>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <select class="form-control" placeholder="Select program aria-label="program" aria-describedby="program-addon" @error('program') is-invalid @enderror" name="program" value="{{ old('program') }}" required autocomplete="program" autofocus>
+                                        @foreach($programs as $program)
+                                            <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

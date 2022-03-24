@@ -33,6 +33,10 @@ class HomeController extends Controller
         $to         = Carbon::now()->endOfDay();
         $total      = DB::Table('donations')->sum('Amount');
         $todayTotal = DB::Table('donations')->whereBetween('created_at', [$from, $to])->sum('Amount');
+        $donors     = DB::Table('members')->get();
+        $programs   = DB::Table('programs')->get();
+
+         //dd($donors, $programs);
 
         if($request->has('name')) {
             $donations  = DB::Table('donations')
@@ -45,7 +49,7 @@ class HomeController extends Controller
             ->paginate(10);
         }
 
-        return view('home', compact('donations', 'total', 'todayTotal','title'));
+        return view('home', compact('donations', 'total', 'todayTotal','title', 'donors', 'programs'));
     }
 
     public function getDonations() {
