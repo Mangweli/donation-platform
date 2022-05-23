@@ -2,7 +2,7 @@
 <div class="modal" id="myModalSearch">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="GET" action="/">
+            <form method="GET" action="/search">
                 <!-- Modal Header -->
                 <div class="modal-header">
                 <h4 class="modal-title">Search Donations</h4>
@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="card card-plain">
                         <div class="card-body">
-                                <input name = "name" type="text" placeholder="Enter name to search" class="form-control"/>
+                                <input name ="name" type="text" placeholder="Enter name to search" class="form-control"/>
                         </div>
                     </div>
                 </div>

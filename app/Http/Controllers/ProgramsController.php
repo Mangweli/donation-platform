@@ -49,7 +49,7 @@ class ProgramsController extends Controller
         $request->validate([
             'name'        => 'required',
             'description' => 'required',
-            'amount'      => 'required'
+            'amount'      => 'required',
         ]);
 
         $invoiceDate = Carbon::now()->toDateTimeString();
@@ -61,9 +61,20 @@ class ProgramsController extends Controller
             'created_at'  => $invoiceDate
         ];
 
+        // dd($data);
+
         DB::Table("programs")->insert($data);
 
         return redirect('/programs')->with('success', 'Program Added!');
+
+       // How can you pass the data via the redirect function
+
+   # programs total => $data['amount'];
+   # $total = DB::Table('programs')->sum('amount');
+
+
+        // return view('/programs.index',compact('data'));
+
     }
 
     /**

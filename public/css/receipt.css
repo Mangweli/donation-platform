@@ -1,0 +1,144 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    color:black;
+    user-select: none;
+    background:rgba(212, 139, 139,.6);
+}
+
+.container{
+flex:1;
+position:relative;
+padding: 20px;
+height:auto;
+/* margin-top:4em; */
+
+}
+
+.frame-one,.frame-two{
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0;
+    position:absolute;
+    height:100%;
+    width:100%;
+    border-radius: 10px;
+    transform:scale(.98,0.95);
+    border: 1px solid rgb(197, 40, 40);
+
+}
+.frame-two{
+    transform:scale(.975,0.938);
+
+}
+span{
+    font-weight:bold;
+}
+
+.header{
+    display:flex;
+    padding-top:10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.header .headers{
+    padding:10px;
+    text-align:center;
+}
+.headers{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    color:rgb(167, 20, 20)
+
+}
+
+.headers h2{
+    width:auto;
+    line-height:.7em;
+    font-weight:bold;
+    font-style:italic;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mid-line{
+    width:30vw;
+    background-color:rgb(167, 20, 20);
+    height:2px;
+}
+
+
+.tel-address{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content: space-around;
+}
+
+.date-receipt{
+    padding:10px;
+    display:flex;
+    width:100%;
+    align-items: center;
+    justify-content: space-around;
+
+
+}
+
+
+input[type=checkbox]{
+    outline:none;
+    background-color:red;
+    border:none;
+}
+
+.donor-program{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+.details{
+    display:flex;
+    flex-direction:column;
+    align-items:center
+}
+.end-line{
+    background-color: red;
+    width:60vw;
+    align-self: center;
+}
+
+.image-container{
+    height:150px;
+    width:250px;
+    position:relative;
+}
+
+.image-container img {
+    display:block;
+    height:100%;
+    width:100%;
+}
+.signature{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    padding-bottom:10px;
+}
+.charityNo{
+    align-self: left;
+}
+
+.footer-details{
+    font-family: 'Open Sans', sans-serif;
+
+}
+

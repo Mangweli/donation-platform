@@ -42,37 +42,53 @@ class DonationsController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'name'        => 'required',
-            'email'       => 'required',
-            'phone'       => 'required',
+            'donor'       => 'required',
+            'program'     => 'required',
             'amount'      => 'required',
             'donationfor' => 'required',
-            'address'     => 'required'
+            'mode_of_payment' => 'required'
         ]);
 
         $invoiceDate = Carbon::now()->toDateTimeString();
 
         $data = [
-            'full_name'    => trim($request->input('name')),
-            'email'        => trim($request->input('email')),
-            'phone'        => trim($request->input('phone')),
+            'donor'        => trim($request->input('donor')),
+            'program'      => trim($request->input('program')),
             'amount'       => trim($request->input('amount')),
-            'donation_for' => trim($request->input('donationfor')),
-            'address'      => trim($request->input('address')),
+            'donation_for'  => trim($request->input('donationfor')),
+            'mode_of_payment' => trim($request -> input('mode_of_payment')),
             'created_at'   => $invoiceDate
         ];
 
+     
+
         $id = DB::Table("donations")->insertGetId($data);
 
-        return view('invoices.invoice', compact('data', 'invoiceDate', 'id'));
+        $user = DB::Table("members")->where('id',$data['donor'])->first();
+
+        
+    $donations  = DB::Table('donations')
+    // ->join("programs","programs.id","=","donations.program")
+    ->join("members", "members.id","=","donations.donor")
+    ->orderBy('donations.created_at', 'desc')
+    ->paginate(10);
+
+return redirect('/')->with('success','Donation Added');
+        // return view('invoices.invoice', compact('donations','data','user','invoiceDate', 'id'));
+
     }
 
     public function getDonationPrints($id) {
         $data = (array)DB::Table("donations")->where('id', $id)->first();
+        // dd($data);
+        $user = DB::Table("members")->where('id',$data['donor'])->first();
+        // dd($user);
+
         //dd($data);
         $invoiceDate = $data['created_at'];
-        return view('invoices.invoice', compact('data', 'invoiceDate', 'id'));
+        return view('invoices.invoice', compact('data','user','invoiceDate', 'id'));
     }
 
     /**

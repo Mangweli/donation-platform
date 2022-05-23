@@ -24,6 +24,7 @@
                                         </span>
                                     @enderror
                                 </div>
+
                                 <label>{{ __('Description') }}</label>
                                 <div class="mb-3">
                                     <textarea class="form-control" placeholder="Description" aria-label="description" aria-describedby="description-addon" @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
@@ -33,6 +34,7 @@
                                         </span>
                                     @enderror
                                 </div>
+
                                 <label>{{ __('Amount') }}</label>
                                 <div class="mb-3">
                                     <input type="number" class="form-control" placeholder="Amount" aria-label="amount" aria-describedby="email-addon" @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount" autofocus>
@@ -42,6 +44,9 @@
                                         </span>
                                     @enderror
                                 </div>
+
+
+
                         </div>
                     </div>
                 </div>

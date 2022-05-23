@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgramsTable extends Migration
+class CreateModeOfPaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('mode_of_payment', function (Blueprint $table) {
+
+
+
+
+            
             $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->integer('amount');
-            // $table->string('mode_of_payment');
+            $table->integer('cash')->default(0);
+            $table->integer('cheque')->default(0);
+            $table->integer('card')->default(0);
+            $table->integer('mpesa')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('mode_of_payment');
     }
 }

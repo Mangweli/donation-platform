@@ -25,6 +25,7 @@ use App\Models\Members;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [HomeController::class, 'getDonations'])->name('existingDonations');
 Route::post('/donations', [DonationsController::class, 'store']);
 Route::get('/donations/{id}', [DonationsController::class, 'getDonationPrints']);
 Route::get('/members/', [MembersController::class, 'index']);

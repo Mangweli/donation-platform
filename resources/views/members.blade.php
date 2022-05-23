@@ -33,9 +33,12 @@
                     <table class="table align-items-center mb-0">
                       <thead>
                         <tr>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                          {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MemberID</th> --}}
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name </th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email </th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone </th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
                           <th class="text-secondary opacity-7">Actions</th>
                         </tr>
@@ -50,27 +53,48 @@
                                         </div>
                                     </div>
                                 </td>
+
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">{{ Carbon\Carbon::parse($member->created_at)->toDateString() }}</span>
                                 </td>
+
                                 <td>
                                     <div class="d-flex px-2 py-1">
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="mb-0 text-sm">{{ $member->first_name }} {{ $member->last_name }}</h6>
-                                        <p class="text-xs text-secondary mb-0">{{ $member->email }}</p>
+                                        {{-- <p class="text-xs text-secondary mb-0">{{ $member->email }}</p> --}}
                                     </div>
                                     </div>
                                 </td>
+
+
+<td>
+  <p class="text-xs text-secondary mb-0">{{ $member->email }}</p>
+
+</td>
+
+
+
+
+
                                 <td>
-                                    <p class="text-xs font-weight-bold mb-0">{{ $member->address }}</p>
-                                    <p class="text-xs text-secondary mb-0">{{ $member->phone }}</p>
+                                  <p class="text-xs text-secondary mb-0">{{ $member->phone }}</p>
                                 </td>
+
+<td>
+  <p class="text-xs font-weight-bold mb-0">{{ $member->address }}</p>
+
+</td>
+
+
+
                                 <td class="align-middle">
                                     {{-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                     Edit
                                     </a> --}}
                                     {{-- <a href = "/members/{{ $member->id }}" target = "_blank" class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1" aria-hidden="true"></i> Print</a> --}}
                                 </td>
+
                             </tr>
                         @endforeach
                       </tbody>

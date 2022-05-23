@@ -1,107 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>{{ config('app.name', 'Shree') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url('css/receipt.css')}}">
 </head>
+
 <body>
-<div class="container bootdey">
-<div class="row invoice row-printable">
-    <div class="col-md-10">
-        <!-- col-lg-12 start here -->
-        <div class="panel panel-default plain" id="dash_0">
-            <!-- Start .panel -->
-            <div class="panel-body p30">
-                <div class="row">
-                    <!-- Start .row -->
-                    <div class="col-lg-6">
-                        <!-- col-lg-6 start here -->
 
-                    </div>
-                    <!-- col-lg-6 end here -->
-                    <div class="col-lg-6">
-                        <!-- col-lg-6 start here -->
-                        <div class="invoice-from">
-                            <ul class="list-unstyled text-right">
-                                <li>Shree Vidya Pitha</li>
-                                <li>Shree Mahalakshmi Temple</li>
-                                <li>Bhulabhai Desai Road,</li>
-                                <li>Mumbai-400 026.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- col-lg-6 end here -->
-                    <div class="col-lg-12">
-                        <!-- col-lg-12 start here -->
-                        <div class="invoice-details mt25">
-                            <div class="well">
-                                <ul class="list-unstyled mb0">
-                                    <li><strong>Invoice</strong> #{{ $id }}</li>
-                                    <li><strong>Invoice Date: </strong>{{ Substr(Carbon\Carbon::parse($invoiceDate)->toDayDateTimeString(), 0, 17) }}</li>
-                                    <li><strong>Status:</strong> <span class="label label-success">PAID</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="invoice-to mt25">
-                            <ul class="list-unstyled">
-                                <li><strong>Invoiced To</strong></li>
-                                <li>{{ $data['full_name'] }}</li>
-                                <li>{{ $data['address'] }}</li>
-                            </ul>
-                        </div>
-                        <div class="invoice-items">
-                            <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="per70 text-center">Description</th>
-                                            <th class="per25 text-center">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ $data['donation_for'] }}</td>
 
-                                            <td class="text-center">$ {{ number_format($data['amount'], 2) }} USD</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="1" class="text-right">Total:</th>
-                                            <th class="text-center">{{ number_format($data['amount'], 2) }}</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="invoice-footer mt25">
-                            <p class="text-center">Generated on {{ Substr(Carbon\Carbon::now()->toDayDateTimeString(), 0, 17) }} <a onclick="window.print()" href="#" class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a></p>
-                        </div>
-                    </div>
-                    <!-- col-lg-12 end here -->
-                </div>
-                <!-- End .row -->
-            </div>
-        </div>
-        <!-- End .panel -->
-    </div>
-    <!-- col-lg-12 end here -->
-</div>
+<div class="container">
+
+
+<div class="frame-one"></div>
+<div class="frame-two"></div>
+
+
+
+<div class="header">
+
+<div class="image-container">
+    <img alt='' src="{{ url('/assets/img/logos/Image1.png.png')}}"/>
+
 </div>
 
-<style type="text/css">
-body{
-    margin-top:10px;
-    background:#eee;
-}
-</style>
+<div class="headers">
 
-<script type="text/javascript">
+<h2>
+    Shree Vidya Pitha
+</h2>
 
-</script>
+<div class="mid-line">
+</div>
+
+<h4>Shree Mahalkshmi Temple
+</h4>
+
+
+
+</div>
+
+<div class="image-container">
+    <img alt='' src="{{ url('/assets/img/logos/Image2.png')}}"/>
+</div>
+
+</div>
+
+
+
+<div class="date-receipt">
+
+<div class="date"> <p> <span> Date: </span> <?php echo date("Y/m/d") ?></p>  </div>
+&nbsp;
+&nbsp;
+&nbsp;
+<div class="receipt"> <p> <span> Receipt No: </span> <?php echo rand(1,50) ?></p>  </div>
+
+
+</div>
+
+
+
+<div class="details">
+
+<div class="acknowledge">
+    <p> <span>Acknowledged with thanks from : </span> Raui Balakashan
+</div>
+
+<div class="tel-address">
+<div class="telephone">
+    <span style="text-align:center">Address:
+
+    </span> 
+    <p style="display:flex" >
+    
+
+        {{ $user->address }}
+        {{-- 6742 knight street - <br> Vancouver <br> B.C V5P 2W3 --}}
+    </p>
+    
+
+</div>
+<div class="address">
+<p>
+<span>
+    Telephone:
+</span>
+ {{-- 555-888-888 --}}
+ {{ $user->phone }}
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="amount"> <p> <span> The Sum Of: </span>  {{ $data['amount'] }} &nbsp; Dollars </p> </div>
+<div class="comment"> <p> <span> Donation for: </span> {{ $data['donation_for'] }} </p> </div>
+
+
+<div class="mode-of-payment">
+<p>
+    <span>
+
+        Mode of Payment : 
+</span>
+{{ $data['mode_of_payment'] }}
+</p>
+
+
+</div>
+
+<div class="end-line">
+</div>
+
+<div class="signature">
+
+<div>
+        <p> <span>Signature </span>: </p>
+</div>
+
+<div>
+
+<img alt='' src="{{ url('/assets/img/logos/Signature.png')}}"/>
+    
+</div>
+
+</div>
+
+<div class="charityNo">
+    <p>
+
+     Charity No. <span> 89285 1437RR0001 </span> 
+</p>
+</div>
+
+<div class="footer-details">
+
+<div>
+
+    467 EAST 11<sup>th</sup> AVENUE,VANCOUVER, B.C., CANADA V5T 2C8 <li  style="display:inline-block"> Telephone: (604) 874-0175 </li>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+    
 </body>
 </html>
