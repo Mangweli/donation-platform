@@ -85,7 +85,7 @@ class HomeController extends Controller
 
     // getExistingDonations that much the search variable
 
-    public function getDonations(Request $request) {
+    public function getDonations(Request $request) {ce
 
         $name  = $request->input('name');
 
